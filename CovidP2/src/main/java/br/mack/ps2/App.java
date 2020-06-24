@@ -1,11 +1,6 @@
 package br.mack.ps2;
 
-//import br.mack.ps2.api.Trends;
-//import br.mack.ps2.api.ScannerVai;
-//import br.mack.ps2.api.Trends;
 import br.mack.ps2.dao.Covid19DAOMySQL;
-////import br.mack.ps2.dao.TrendsDao;
-//import br.mack.ps2.dao.TrendsDao;
 import br.mack.ps2.resource.InterfaceUsuarioCovid19;
 import br.mack.ps2.resource.Covid19Resource;
 import io.dropwizard.Application;
@@ -14,27 +9,11 @@ import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
-//import br.mack.ps2.resource.TrendsResource;
-//import io.dropwizard.Application;
-//import io.dropwizard.Configuration;
-//import io.dropwizard.assets.AssetsBundle;
-//import io.dropwizard.setup.Bootstrap;
-//import io.dropwizard.setup.Environment;
-//import org.eclipse.jetty.servlets.CrossOriginFilter;
-//
-//import javax.servlet.DispatcherType;
-//import javax.servlet.FilterRegistration;
-//import java.util.EnumSet;
-//import java.util.InputMismatchException;
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
 import java.util.EnumSet;
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
 public class App extends Application<Configuration> {
     public static void main( String[] args ) {
         try {
@@ -70,11 +49,6 @@ public class App extends Application<Configuration> {
         cors.setInitParameter("allowedMethods","OPTIONS,GET,PUT,POST,DELETE,HEAD");
 
         cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class),true,"");
-
-
-
-
-
 
         environment.jersey().register(new Covid19Resource());
 

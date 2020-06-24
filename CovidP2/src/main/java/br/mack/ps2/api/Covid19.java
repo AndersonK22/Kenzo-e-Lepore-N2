@@ -1,13 +1,10 @@
 package br.mack.ps2.api;
 
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Covid19 {
         private int id;
-        private String date;
+        private Date date;
         private int value;
 
         public Covid19(){
@@ -16,7 +13,7 @@ public class Covid19 {
             this.value = 0;
         }
 
-        public Covid19(int id, String date, int value) {
+        public Covid19(int id, Date date, int value) {
             this.id = id;
             this.date = date;
             this.value = value;
@@ -26,12 +23,11 @@ public class Covid19 {
 
         public void setId(int id){this.id = id;}
 
-        public String getDate() {
+        public Date getDate() {
             return date;
         }
 
-
-        public void setDate(String date) {
+        public void setDate(Date date) {
             this.date = date;
         }
 

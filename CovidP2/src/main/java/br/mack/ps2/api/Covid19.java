@@ -8,12 +8,10 @@ import java.util.List;
 public class Covid19 {
         private int id;
         private String date;
-        //private String date;
         private int value;
 
         public Covid19(){
             this.id = -1;
-           // this.date = null;
             this.date = null;
             this.value = 0;
         }
@@ -31,16 +29,12 @@ public class Covid19 {
         public String getDate() {
             return date;
         }
-//        public String getDate() {
-//            return date;
-//        }
+
 
         public void setDate(String date) {
             this.date = date;
         }
-//            public void setDate(String date) {
-//            this.date = date;
-//        }
+
         public int getValue() {
             return value;
         }

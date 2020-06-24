@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Create a div where the graph will take place -->
+    <div id="chart"></div>
+    <script src="js/chart.js"></script>
+    <script>
+        d3.json("/api/trends", 
+        function (data) {
+            var parseTime = d3.timeParse("%Y-%m-%d");
+
+            // format the data
+           var parseDate = d3.timeParse("%Y-%m-%d");
+          data = data.results.map(function(d){
+              d.date = parseDate(d.date)    
+              return d;
+          });
+
+            drawChart()(data);
+
+        });
+    </script>
+</body>
+
+</html>

@@ -8,7 +8,7 @@ public class MySQLConnection {
 
     String url = "jdbc:mysql://localhost:3306/covid19?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     String usuario ="root";
-    String psw = "root";
+    String psw = "";
 
     public Connection getConnection(){
         try{

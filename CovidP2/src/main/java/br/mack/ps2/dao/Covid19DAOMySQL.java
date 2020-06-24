@@ -23,7 +23,8 @@ public class Covid19DAOMySQL implements Covid19Dao {
         Connection conexao = mysql.getConnection();
         try{
             PreparedStatement stm = conexao.prepareStatement(createSQL);
-            stm.setString(1, covid19.getDate());
+
+            stm.setDate(1,new java.sql.Date(covid19.getDate().getTime()));
             stm.setInt(2, covid19.getValue());
             int registro =stm.executeUpdate();
             return(registro>0);
@@ -51,7 +52,7 @@ public class Covid19DAOMySQL implements Covid19Dao {
             while (registro.next()) {
                 Covid19 corona = new Covid19();
                 corona.setId(registro.getInt("id"));
-                corona.setDate(registro.getString("date"));
+                corona.setDate(registro.getDate("date"));
                 corona.setValue(registro.getInt("value"));
 
                 covid19.add(corona);
@@ -81,7 +82,7 @@ public class Covid19DAOMySQL implements Covid19Dao {
         try {
             PreparedStatement stm = conexao.prepareStatement(updateSQL);
 
-            stm.setString(1, covid19.getDate());
+            stm.setDate(1,new java.sql.Date(covid19.getDate().getTime()));
             stm.setInt(2, covid19.getValue());
             stm.setInt(3, covid19.getId());
 

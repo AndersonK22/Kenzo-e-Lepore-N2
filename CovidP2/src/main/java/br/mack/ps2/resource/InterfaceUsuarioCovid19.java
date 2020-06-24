@@ -6,17 +6,22 @@ import br.mack.ps2.api.Covid19;
 //import br.mack.ps2.api.CoronavirusString;
 import br.mack.ps2.dao.Covid19Dao;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class InterfaceUsuarioCovid19 {
     Covid19Dao covid19DAO;
     Scanner in;
+//    Trends dataBase;
 
     public InterfaceUsuarioCovid19(Covid19Dao covid19DAO) {
         this.covid19DAO = covid19DAO;
         this.in = new Scanner(System.in);
-
+//        this.dataBase = new Trends();
 
     }
 
@@ -70,9 +75,16 @@ public class InterfaceUsuarioCovid19 {
         System.out.println("___Novo Dado___");
 
         System.out.println("\nInforme a data dos dados: ");
+        try {
             Scanner s = new Scanner(System.in);
             String dataRecebida = s.nextLine();
-            covid19.setDate(dataRecebida);
+           DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+           Date dt = df.parse(dataRecebida);
+            covid19.setDate(dt);
+       } catch (ParseException ex) {
+           ex.printStackTrace();
+        }
+        System.out.println("Informe o valor do dia:  ");
         covid19.setValue(in.nextInt());
 
 
@@ -103,6 +115,11 @@ public class InterfaceUsuarioCovid19 {
         for (int i = 0; i < coronas.size(); i++) {
             Covid19 covid19 = coronas.get(i);
 
+//            String id = String.valueOf(coronavirus.getId());
+//            String letra = dateFormat.format(coronavirus.getDate());
+//            String value = String.valueOf(coronavirus.getValue());
+//            coronaString.add(i,new CoronavirusString(id,letra,value));
+
             coronas2.get(i).setValue(covid19.getValue());
             coronas2.get(i).setId(covid19.getId());
             coronas2.get(i).setDate(covid19.getDate());
@@ -120,11 +137,17 @@ public class InterfaceUsuarioCovid19 {
 
         covid19.setId(in.nextInt());
         in.nextLine();
-        
+
+       try {
             Scanner s = new Scanner(System.in);
             System.out.println("Altere a data do valor: ");
             String dataRecebida = s.nextLine();
-            covid19.setDate(dataRecebida);
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date dt = df.parse(dataRecebida);
+            covid19.setDate(dt);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
             System.out.println("Altere o valor do dia: ");
             covid19.setValue(in.nextInt());
 
